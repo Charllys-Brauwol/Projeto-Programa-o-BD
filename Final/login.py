@@ -2,7 +2,6 @@ from PyQt5 import  uic,QtWidgets
 import sqlite3
 
 #Tela Principal de Login
-
 def login():
     usuario_digitado = tela_login.lineEdit.text()
     senha_digitada = int(tela_login.lineEdit_2.text())
@@ -21,7 +20,6 @@ def login():
         print("Erro")
 
 #Função do Botão de Listar Veículos Cadastrados
-
 def listar_dados_veiculos():
     tela_veiculos_2.show()
     banco = sqlite3.connect('banco_veiculos.db') 
@@ -38,7 +36,6 @@ def listar_dados_veiculos():
     banco.close()
     
 #Função do Botão de Cadastrar Veiculos
-
 def salvar_dados_veiculos():
     tela_veiculos.show()
     veiculo = tela_veiculos.lineEdit.text()
@@ -58,8 +55,21 @@ def salvar_dados_veiculos():
     except sqlite3.Error as erro:
         print("Erro ao inserir os dados: ",erro)
 
-#Função do Botão de Listar Funcionários Cadastrados
+#Função do Botão de Inserir Dados de Viagens
+def inserir_dados_veiculos():
+    tela_menu.close()
+    tela_veiculos_4.show()
+    km_saida = tela_veiculos_4.lineEdit.int()
+    km_volta = tela_veiculos_4.lineEdit_2.int()
+    abastecimento = tela_veiculos_4.lineEdit_3.float()
+    data_viagem = tela_veiculos_4.lineEdit_4.int()
 
+#Função Menu Principal Veículos
+def menu_veiculos():
+    tela_menu.close()
+    tela_veiculos_3.show()
+
+#Função do Botão de Listar Funcionários Cadastrados
 def listar_dados_funcionarios():
     tela_funcionarios_2.show()
     banco = sqlite3.connect('banco_funcionario.db') 
@@ -76,7 +86,6 @@ def listar_dados_funcionarios():
     banco.close()
     
 #Função do Botão de Cadastrar Funcionarios
-
 def salvar_dados_funcionarios():
     tela_funcionarios.show()
     nome_completo = tela_funcionarios.lineEdit.text()
@@ -103,7 +112,6 @@ def salvar_dados_funcionarios():
         print("Erro ao inserir os dados: ",erro)
 
 #Função do Botão de Listar Cidades Cadastradas
-
 def listar_dados_cidades():
     tela_cidades_2.show()
     banco = sqlite3.connect('banco_cidades.db') 
@@ -120,7 +128,6 @@ def listar_dados_cidades():
     banco.close()
     
 #Função do Botão de Cadastrar Cidades
-
 def salvar_dados_cidades():
     tela_cidades.show()
     cidade = tela_cidades.lineEdit.text()
@@ -144,27 +151,31 @@ def salvar_dados_cidades():
    
 app=QtWidgets.QApplication([])
 
-#Tela de Login e Menu Principal
-
+#Telas Relacionadas ao Login e Menu Principal
 tela_login = uic.loadUi("login.ui")
 tela_menu = uic.loadUi("Menu.ui")
 tela_login.pushButton.clicked.connect(login)
 tela_menu.pushButton.clicked.connect(salvar_dados_funcionarios)
-tela_menu.pushButton_2.clicked.connect(salvar_dados_veiculos)
+tela_menu.pushButton_2.clicked.connect(menu_veiculos)
 tela_menu.pushButton_3.clicked.connect(salvar_dados_cidades)
 
-#Tela dos Veículos
-
-tela_veiculos=uic.loadUi("cadastrar_veiculos.ui")
+#Telas Relacionadas aos Veículos
+tela_veiculos = uic.loadUi("cadastrar_veiculos.ui")
 tela_veiculos_2 = uic.loadUi("listarveiculos.ui")
+tela_veiculos_3 = uic.loadUi("menu_veiculos.ui")
+tela_veiculos_4 = uic.loadUi("dados_veiculos.ui")
 tela_veiculos.pushButton.clicked.connect(salvar_dados_veiculos)
 tela_veiculos.pushButton_2.clicked.connect(listar_dados_veiculos)
+tela_veiculos_3.pushButton.clicked.connect(salvar_dados_veiculos)
+tela_veiculos_3.pushButton_2.clicked.connect(inserir_dados_veiculos)
 
+#Telas relacionadas aos Funcionários
 tela_funcionarios=uic.loadUi("cadastrar_funcionario.ui")
 tela_funcionarios_2 = uic.loadUi("listarfuncionario.ui")
 tela_funcionarios.pushButton.clicked.connect(salvar_dados_funcionarios)
 tela_funcionarios.pushButton_2.clicked.connect(listar_dados_funcionarios)
 
+#Telas Relacionadas as Cidades
 tela_cidades=uic.loadUi("cadastrar_cidades.ui")
 tela_cidades_2 = uic.loadUi("listarcidades.ui")
 tela_cidades.pushButton.clicked.connect(salvar_dados_cidades)
