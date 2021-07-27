@@ -59,10 +59,13 @@ def salvar_dados_veiculos():
 def inserir_dados_veiculos():
     tela_menu.close()
     tela_veiculos_4.show()
-    km_saida = tela_veiculos_4.lineEdit.int()
-    km_volta = tela_veiculos_4.lineEdit_2.int()
+    km_saida = tela_veiculos_4.lineEdit.float()
+    km_volta = tela_veiculos_4.lineEdit_2.float()
     abastecimento = tela_veiculos_4.lineEdit_3.float()
     data_viagem = tela_veiculos_4.lineEdit_4.int()
+    posto = tela_veiculos_4.lineEdit_5.text()
+    tecnicos_viagem = tela_veiculos_4.lineEdit_6.text()
+    localidades = tela_veiculos_4.lineEdit_7.text()
 
 #Função Menu Principal Veículos
 def menu_veiculos():
