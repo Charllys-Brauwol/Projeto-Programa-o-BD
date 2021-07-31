@@ -125,6 +125,31 @@ background-color: rgb(30, 60, 110);</string>
      <string>INSERIR DADOS VIAGEM</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>320</y>
+      <width>251</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 15px;
+border-width:2px;
+border-style:outset;
+border-color:black;
+background-color: rgb(30, 60, 110);</string>
+    </property>
+    <property name="text">
+     <string>MENU</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
